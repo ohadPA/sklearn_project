@@ -1,0 +1,12 @@
+variables:
+  GIT_DEPTH: "0"
+
+mirror_to_gitlab:
+  script:
+    - git config --global user.name "${GITLAB_USER_NAME}"
+    - git config --global user.email "${GITLAB_USER_EMAIL}"
+    - git remote add gitlab ${GITLAB_REPO_URL}
+    - git push gitlab --mirror
+    - git push gitlab --tags
+  only:
+    - main
